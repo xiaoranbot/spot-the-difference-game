@@ -1,0 +1,194 @@
+/* Whale Cottage — layout and look. Fixed 1280 x 480 frame: the screenshots
+   are taken at exactly this size, so nothing here depends on the viewport. */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 1280px;
+  height: 480px;
+  overflow: hidden;
+  background: #1f2a44;
+  color: #f6e3c5;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+#app {
+  width: 1280px;
+  height: 480px;
+  padding: 6px 16px;
+  position: relative;
+}
+
+/* ---- top bar ----------------------------------------------------------- */
+#hud {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+#hud h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  color: #ffd23f;
+  white-space: nowrap;
+}
+
+#hud h1 .sub {
+  font-size: 13px;
+  color: #9fb4d8;
+  font-weight: normal;
+  margin-left: 8px;
+}
+
+.pill {
+  background: #2c3e6b;
+  border: 1px solid #4a6396;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+#hud .spacer { flex: 1; }
+
+button {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  color: #1f2a44;
+  background: #ffd23f;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+button:hover { background: #ffe08a; }
+button:disabled { opacity: 0.45; cursor: default; }
+button.secondary { background: #9fb4d8; }
+button.secondary:hover { background: #b9c9e4; }
+
+/* ---- the two panels ------------------------------------------------------ */
+#stage {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.panel { width: 600px; }
+
+.panel-label {
+  height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #9fb4d8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel-label .tag-right { color: #ffd23f; }
+
+.panel-frame {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  border: 3px solid #4a6396;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f6e3c5;
+}
+
+.panel-frame svg {
+  display: block;
+  width: 600px;
+  height: 400px;
+}
+
+#rightSvg { cursor: crosshair; }
+
+/* keyboard crosshair ring over the right panel */
+#crosshair {
+  position: absolute;
+  left: 300px;
+  top: 200px;
+  width: 26px;
+  height: 26px;
+  border: 3px solid #ffd23f;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(31, 42, 68, 0.7);
+  pointer-events: none;
+}
+
+#crosshair::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  background: #ffd23f;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* pulsing hint ring */
+.hint-ring { animation: hintpulse 0.6s ease-in-out infinite alternate; }
+@keyframes hintpulse {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+/* ---- overlays (title / win) ---------------------------------------------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(18, 26, 48, 0.72);
+  z-index: 10;
+}
+
+.overlay.hidden { display: none; }
+
+.card {
+  background: #f6e3c5;
+  color: #33302b;
+  border-radius: 16px;
+  padding: 28px 40px;
+  text-align: center;
+  max-width: 640px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 34px;
+  color: #2c3e6b;
+}
+
+.card p { margin: 8px 0; font-size: 16px; line-height: 1.45; }
+.card .rules { font-size: 15px; text-align: left; display: inline-block; }
+.card .rules li { margin: 3px 0; }
+
+.card button {
+  font-size: 19px;
+  padding: 12px 30px;
+  margin-top: 10px;
+}
+
+.stats {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  margin: 14px 0 4px;
+}
+
+.stats div { font-size: 15px; color: #7a4a21; }
+.stats b { display: block; font-size: 26px; color: #2c3e6b; }
+
+.keys { font-size: 13px; color: #7a6a55; margin-top: 14px; }

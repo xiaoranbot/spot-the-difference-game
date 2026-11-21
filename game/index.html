@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Whale Cottage — Spot the Difference</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<div id="app">
+  <header id="hud">
+    <h1>🐋 Whale Cottage <span class="sub">Spot the Difference</span></h1>
+    <span class="pill" id="foundCount">Found 0 / 7</span>
+    <span class="pill" id="timer">00:00</span>
+    <span class="spacer"></span>
+    <button id="hintBtn" type="button">Hint (3)</button>
+    <button id="restartBtn" class="secondary" type="button">Restart</button>
+    <button id="soundBtn" class="secondary" type="button">Sound: On</button>
+  </header>
+
+  <main id="stage">
+    <section class="panel">
+      <div class="panel-label"><span>Original</span><span>Study this one</span></div>
+      <div class="panel-frame">
+        <svg id="leftSvg" viewBox="0 0 600 400" role="img" aria-label="Original cottage scene"></svg>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="panel-label"><span>Find the differences</span><span class="tag-right">Click here!</span></div>
+      <div class="panel-frame">
+        <svg id="rightSvg" viewBox="0 0 600 400" role="img" aria-label="Cottage scene with seven differences"></svg>
+        <div id="crosshair"></div>
+      </div>
+    </section>
+
+    <div class="overlay" id="titleScreen">
+      <div class="card">
+        <h2>🐋 Whale Cottage</h2>
+        <p>A cosy evening in a little cottage — but the picture on the right
+        is not quite the same as the one on the left.</p>
+        <ul class="rules">
+          <li>Find all <b>7 differences</b> by clicking them in the right picture.</li>
+          <li>A wrong click leaves a red mark. Hints are limited to 3.</li>
+          <li>Finish fast and accurate for the best result!</li>
+        </ul>
+        <br>
+        <button id="startBtn" type="button">Start the hunt</button>
+        <p class="keys">Mouse: click the right picture &nbsp;·&nbsp; Keyboard: arrow keys move the
+        ring, Enter confirms, H hint, R restart, M mute</p>
+      </div>
+    </div>
+
+    <div class="overlay hidden" id="endScreen">
+      <div class="card">
+        <h2>🎉 You found them all!</h2>
+        <p>Every difference in Whale Cottage is circled. Well spotted!</p>
+        <div class="stats">
+          <div>Time<b id="endTime">00:00</b></div>
+          <div>Wrong clicks<b id="endWrong">0</b></div>
+          <div>Accuracy<b id="endAccuracy">100%</b></div>
+        </div>
+        <button id="againBtn" type="button">Play again</button>
+        <p class="keys">Press R to play again</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="src/differences.js"></script>
+<script src="src/scene.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
